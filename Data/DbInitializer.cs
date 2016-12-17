@@ -17,7 +17,7 @@ namespace Marktkaart.Data
 
             var markten = new Markt[]
             {
-                new Markt{Id=1,Naam="Amersfoort",Beschrijving="Leuke markt!",Adres="Marktplein 1, Amersfoort",X=144000,Y=415000}
+                new Markt{Guid="025bfa35-6496-4f92-803e-0fcf185c3342",Naam="Amersfoort",Beschrijving="Leuke markt!",Adres="Marktplein 1, Amersfoort",X=144000,Y=415000}
             };
             foreach (Markt m in markten)
             {

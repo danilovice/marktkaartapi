@@ -12,8 +12,7 @@ namespace MarktkaartAPI.Migrations
                 name: "Markten",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                    Guid = table.Column<string>(nullable: false),
                     Adres = table.Column<string>(nullable: true),
                     Beschrijving = table.Column<string>(nullable: true),
                     Naam = table.Column<string>(nullable: true),
@@ -23,7 +22,7 @@ namespace MarktkaartAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Markten", x => x.Id);
+                    table.PrimaryKey("PK_Markten", x => x.Guid);
                 });
         }
 

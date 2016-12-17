@@ -1,8 +1,11 @@
-namespace Marktkaart.Models {
+using System.ComponentModel.DataAnnotations;
 
-public class Markt
+namespace Marktkaart.Models 
+{
+    public class Markt
     {
-        public int Id { get; set; }
+        [Key]
+        public string Guid { get; set; }
         public string Naam { get; set; }
         public string Beschrijving { get; set; }
         public string Adres { get; set; }

@@ -1,24 +1,24 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Marktkaart.Models;
-using Marktkaart.Data;
+using Marktkaart.Interfaces;
 
 namespace Marktkaart.Controllers
 {
     [Route("api/[controller]")]
     public class MarktController : Controller
     {
-        private readonly MarktkaartDbContext _context;
+        private readonly IMarktkaartRepository _repository;
 
-        public MarktController(MarktkaartDbContext context)
+        public MarktController(IMarktkaartRepository repository)
         {
-            _context = context;
+            this._repository = repository;
         }
 
         [HttpGet]
         public IEnumerable<Markt> GetAll()
         {
-            var result = _context.Markten;
+            var result = _repository.GetAll();
             return result;
         }
     }
