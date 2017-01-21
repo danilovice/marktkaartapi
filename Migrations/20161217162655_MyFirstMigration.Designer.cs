@@ -8,7 +8,7 @@ using Marktkaart.Data;
 namespace MarktkaartAPI.Migrations
 {
     [DbContext(typeof(MarktkaartDbContext))]
-    [Migration("20161212210039_MyFirstMigration")]
+    [Migration("20161217162655_MyFirstMigration")]
     partial class MyFirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,8 +18,7 @@ namespace MarktkaartAPI.Migrations
 
             modelBuilder.Entity("Marktkaart.Models.Markt", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<string>("Guid");
 
                     b.Property<string>("Adres");
 
@@ -33,7 +32,7 @@ namespace MarktkaartAPI.Migrations
 
                     b.Property<double>("Y");
 
-                    b.HasKey("Id");
+                    b.HasKey("Guid");
 
                     b.ToTable("Markten");
                 });

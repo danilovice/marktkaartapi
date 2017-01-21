@@ -17,8 +17,7 @@ namespace MarktkaartAPI.Migrations
 
             modelBuilder.Entity("Marktkaart.Models.Markt", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<string>("Guid");
 
                     b.Property<string>("Adres");
 
@@ -32,7 +31,7 @@ namespace MarktkaartAPI.Migrations
 
                     b.Property<double>("Y");
 
-                    b.HasKey("Id");
+                    b.HasKey("Guid");
 
                     b.ToTable("Markten");
                 });
