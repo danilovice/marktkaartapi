@@ -23,6 +23,7 @@ namespace Marktkaart.Data
         {
             item.Guid = Guid.NewGuid().ToString();
             _context.Markten.Add(item);
+            _context.SaveChanges();
         }
 
         public Markt Find(string guid)
@@ -37,14 +38,25 @@ namespace Marktkaart.Data
             if (item != null)
             {
                 _context.Markten.Remove(item);
+                _context.SaveChanges();
             }           
         }
 
         public void Update(Markt item)
         {
-            if (_context.Markten.Where(a => a.Guid == item.Guid).Any())
-            {
-                _context.Markten.Update(item);
+            var itemToUpdate = _context.Markten.Where(a => a.Guid == item.Guid).FirstOrDefault();
+
+            if (itemToUpdate != null)
+            {            
+                itemToUpdate.Adres = item.Adres;
+                itemToUpdate.Beschrijving = item.Beschrijving;
+                itemToUpdate.Naam = item.Naam;
+                itemToUpdate.Plaats = item.Plaats;
+                itemToUpdate.X = item.X;
+                itemToUpdate.Y = item.Y;
+
+                _context.Markten.Update(itemToUpdate);
+                _context.SaveChanges();
             }
         }
     }

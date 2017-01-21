@@ -50,7 +50,7 @@ namespace Marktkaart.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(string id, [FromBody] Markt item)
         {
-            if (item == null || item.Guid != id)
+            if (item == null || id == null)
             {
                 return BadRequest();
             }
