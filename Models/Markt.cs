@@ -10,7 +10,10 @@ namespace Marktkaart.Models
         public string Beschrijving { get; set; }
         public string Adres { get; set; }
         public string Plaats { get; set; }
+        public string Gemeente { get; set; }
         public double X { get; set; }
         public double Y { get; set; }
+
+
     }
 }
