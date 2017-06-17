@@ -8,9 +8,10 @@ using Marktkaart.Data;
 namespace MarktkaartAPI.Migrations
 {
     [DbContext(typeof(MarktkaartDbContext))]
-    partial class MarktkaartDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170617110906_NewModel_06172017")]
+    partial class NewModel_06172017
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.3");
