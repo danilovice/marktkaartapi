@@ -2,6 +2,8 @@ using System;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Marktkaart.Data;
 
 namespace Marktkaart
@@ -20,20 +22,26 @@ namespace Marktkaart
                     var context = services.GetRequiredService<MarktkaartDbContext>();
                     DbInitializer.Initialize(context);
                 }
-                //TODO: Add logging
+                
                 catch (Exception ex)
                 {
-                    //var logger = services.GetRequiredService<ILogger<Program>>();
-                    //logger.LogError(ex, "An error occurred while seeding the database.");
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
                 }
-    }
+            }
 
-    host.Run();
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
+            .ConfigureLogging((hostingContext, logging) =>
+            {
+                logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                logging.AddConsole();
+                logging.AddDebug();
+            })
+            .UseStartup<Startup>()
+            .Build();
     }
 }
