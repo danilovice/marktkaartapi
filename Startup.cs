@@ -29,7 +29,7 @@ namespace Marktkaart
             // Add framework services.            
             services.AddDbContext<MarktkaartDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddSingleton<IMarktkaartRepository, MarktkaartRepository>();
+            services.AddScoped<IMarktkaartRepository, MarktkaartRepository>();
             services.AddMvc();            
         }
 
