@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Marktkaart.Data;
+using System.IO;
 
 namespace Marktkaart
 {
@@ -41,6 +42,8 @@ namespace Marktkaart
                 logging.AddConsole();
                 logging.AddDebug();
             })
+            .UseKestrel()
+            .UseContentRoot(Directory.GetCurrentDirectory())
             .UseStartup<Startup>()
             .Build();
     }
